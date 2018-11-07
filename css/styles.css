@@ -249,7 +249,8 @@ nav h1 a {
   width: 50%;
 }
 #reviews-container {
-  padding: 30px 40px 80px;
+  display: flex;
+  flex-direction: column;
 }
 #reviews-container h2 {
   color: #f58500;

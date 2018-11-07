@@ -73,10 +73,10 @@ fillCuisinesHTML = (cuisines = self.cuisines) => {
  */
 initMap = () => {
   self.newMap = L.map('map', {
-        center: [40.722216, -73.987501],
-        zoom: 12,
-        scrollWheelZoom: false
-      });
+    center: [40.722216, -73.987501],
+    zoom: 12,
+    scrollWheelZoom: false
+  });
   L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.jpg70?access_token={mapboxToken}', {
     mapboxToken: 'pk.eyJ1IjoidHJldmlucCIsImEiOiJjam8ya3B5aXIwazQ4M3Zyenc1ZDc5b3puIn0.qj6DJHauJnX3AMVfL3rsFA',
     maxZoom: 18,
@@ -161,10 +161,10 @@ createRestaurantHTML = (restaurant) => {
   const image = document.createElement('img');
   image.className = 'restaurant-img';
   image.src = DBHelper.imageUrlForRestaurant(restaurant);
-  image.setAttribute('max-width',  '100%');
+  image.setAttribute('max-width', '100%');
   image.setAttribute('min-width', '100%');
   image.setAttribute('alt', restaurant.name);
-  
+
   li.append(image);
 
   const name = document.createElement('h1');
@@ -182,6 +182,7 @@ createRestaurantHTML = (restaurant) => {
   const more = document.createElement('a');
   more.innerHTML = 'View Details';
   more.href = DBHelper.urlForRestaurant(restaurant);
+  more.setAttribute('tabIndex', '3')
   li.append(more)
 
   return li
@@ -201,7 +202,7 @@ addMarkersToMap = (restaurants = self.restaurants) => {
     self.markers.push(marker);
   });
 
-} 
+}
 /* addMarkersToMap = (restaurants = self.restaurants) => {
   restaurants.forEach(restaurant => {
     // Add marker to the map
@@ -213,3 +214,16 @@ addMarkersToMap = (restaurants = self.restaurants) => {
   });
 } */
 
+/*
+* Set up service worker
+*/
+
+if (navigator.serviceWorker) {
+
+  navigator.serviceWorker.register('serviceworker.js').then(function () {
+    console.log('Service worker registered')
+  })
+    .catch(function () {
+      console.log('Service worker registration failed');
+    });
+}
