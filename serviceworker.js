@@ -1,6 +1,6 @@
 
 // http://jasonwatmore.com/post/2016/06/22/nodejs-setup-simple-http-server-local-web-server
-
+// use SET PORT=8000 then http-server on command line
 // cache files we want offline available
 const cachedFiles = [
     '/', '/index.html', '/restaurant.html', '/css/styles.css', '/js/dbhelper.js', '/js/main.js', 'js/restaurant_info.js', '/data/restaurants.json',
